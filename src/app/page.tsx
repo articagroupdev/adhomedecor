@@ -20,10 +20,10 @@ const DEFAULT_WA = waUrl("Hola, me interesa conocer más sobre sus productos");
 
 // Exactly 5 curated bento categories — never changes regardless of API order
 const BENTO_ITEMS = [
-  { slug: "laminas-pvc",         label: "Láminas de PVC",     img: "/img/cat-laminas-pvc.jpg" },
+  { slug: "laminas-de-pvc",      label: "Láminas de PVC",     img: "/img/cat-laminas-pvc.jpg" },
   { slug: "wallpanels-exterior", label: "Wallpanels Exterior", img: "/img/cat-wallpanels-exterior.jpg" },
   { slug: "wallpanels-interior", label: "Wallpanels Interior", img: "/img/cat-wallpanels-interior.jpg" },
-  { slug: "pu-stone",            label: "PU Stone-Piedra",     img: "/img/cat-pu-stone.jpg" },
+  { slug: "pu-stone-piedra",     label: "PU Stone-Piedra",     img: "/img/cat-pu-stone.jpg" },
   { slug: "flat-panels",         label: "Flat Panels",         img: "/img/cat-flat-panels.jpg" },
 ] as const;
 
@@ -284,7 +284,7 @@ function NewArrivals({ products }: { products: WCProduct[] }) {
             </h2>
           </div>
           <a
-            href="/catalogo/laminas-pvc"
+            href="/catalogo/laminas-de-pvc"
             className="hidden md:inline-flex items-center gap-2 bg-brand-orange text-white font-body text-xs font-semibold uppercase tracking-widest px-5 py-3 hover:bg-brand-orange-hover transition-colors duration-200"
           >
             Explorar colección →
@@ -364,7 +364,7 @@ function NewArrivals({ products }: { products: WCProduct[] }) {
         {/* Mobile CTA */}
         <div className="mt-8 md:hidden text-center">
           <a
-            href="/catalogo/laminas-pvc"
+            href="/catalogo/laminas-de-pvc"
             className="inline-flex items-center gap-2 bg-brand-orange text-white font-body text-xs font-semibold uppercase tracking-widest px-7 py-3.5"
           >
             Explorar colección →
@@ -584,7 +584,7 @@ function CollectionSpotlight() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="/catalogo/laminas-pvc"
+                href="/catalogo/laminas-de-pvc"
                 className="inline-flex items-center justify-center bg-brand-footer text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-orange transition-colors duration-300"
               >
                 VER COLECCIÓN
@@ -768,7 +768,7 @@ export default async function HomePage() {
   const categories = await getCategories({ hide_empty: true }).catch(() => [] as WCCategory[]);
 
   // Step 2: resolve IDs for parallel fetches (all categories for explorer)
-  const pvcCategory = categories.find((c) => c.slug === "laminas-pvc");
+  const pvcCategory = categories.find((c) => c.slug === "laminas-de-pvc");
 
   // Step 3: parallel fetches — 4 sample products per every category
   const [featuredProducts, pvcProducts, ...explorerProductArrays] = await Promise.all([

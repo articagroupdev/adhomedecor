@@ -9,6 +9,8 @@ function authHeader(): string {
   return `Basic ${token}`;
 }
 
+const requestCache = new Map<string, Promise<any>>();
+
 async function wc<T>(
   endpoint: string,
   params?: Record<string, string | number>
@@ -19,14 +21,35 @@ async function wc<T>(
       url.searchParams.set(k, String(v))
     );
   }
-  const res = await fetch(url.toString(), {
-    headers: { Authorization: authHeader() },
-    next: { revalidate: 3600 },
-  });
-  if (!res.ok) {
-    throw new Error(`WC API ${res.status}: ${endpoint}`);
+  const urlStr = url.toString();
+
+  if (requestCache.has(urlStr)) {
+    return requestCache.get(urlStr) as Promise<T>;
   }
-  return res.json() as Promise<T>;
+
+  const promise = (async () => {
+    const res = await fetch(urlStr, {
+      headers: { 
+        Authorization: authHeader(),
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      },
+      signal: AbortSignal.timeout(15000),
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) {
+      throw new Error(`WC API ${res.status}: ${endpoint}`);
+    }
+    return res.json();
+  })();
+
+  requestCache.set(urlStr, promise);
+
+  // Remove from cache if the request fails, so it can be retried if needed
+  promise.catch(() => {
+    requestCache.delete(urlStr);
+  });
+
+  return promise as Promise<T>;
 }
 
 // ── Types ──────────────────────────────────────────────────────────────────────
