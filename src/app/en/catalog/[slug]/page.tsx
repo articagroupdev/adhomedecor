@@ -192,9 +192,7 @@ export default async function EnCategoryPage({
     );
   }
 
-  const allProducts = await getProducts({ per_page: 100 }).catch(() => [] as WCProduct[]);
-  const products = allProducts
-    .filter((p) => p.categories.some((c) => c.id === cat.id));
+  const products = await getProducts({ per_page: 100, category: cat.id, fields: "id,name,slug,images,categories" }).catch(() => [] as WCProduct[]);
 
   return (
     <>

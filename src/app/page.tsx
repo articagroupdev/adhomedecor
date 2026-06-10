@@ -770,7 +770,7 @@ export default async function HomePage() {
   const categories = await getCategories({ hide_empty: true }).catch(() => [] as WCCategory[]);
 
   // Single request for all products — avoids N parallel WooCommerce calls timing out
-  const allProducts = await getProducts({ per_page: 100 }).catch(() => [] as WCProduct[]);
+  const allProducts = await getProducts({ per_page: 100, fields: "id,name,slug,images,categories" }).catch(() => [] as WCProduct[]);
 
   // Group by category ID in memory
   const productsByCatId = new Map<number, WCProduct[]>();

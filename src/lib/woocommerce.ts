@@ -117,6 +117,7 @@ export async function getProducts(opts?: {
   orderby?: string;
   order?: string;
   search?: string;
+  fields?: string;
 }): Promise<WCProduct[]> {
   return wc<WCProduct[]>("/products", {
     per_page: opts?.per_page ?? 12,
@@ -125,6 +126,7 @@ export async function getProducts(opts?: {
     ...(opts?.category !== undefined ? { category: opts.category } : {}),
     ...(opts?.featured ? { featured: 1 } : {}),
     ...(opts?.search ? { search: opts.search } : {}),
+    ...(opts?.fields ? { _fields: opts.fields } : {}),
     orderby: opts?.orderby ?? "date",
     order: opts?.order ?? "desc",
   });
