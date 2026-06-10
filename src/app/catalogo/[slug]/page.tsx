@@ -191,12 +191,10 @@ export default async function CategoryPage({
     );
   }
 
-  const products = await getProducts({
-    category: cat.id,
-    per_page: 24,
-    orderby: "date",
-    order: "desc",
-  }).catch(() => [] as WCProduct[]);
+  const allProducts = await getProducts({ per_page: 100 }).catch(() => [] as WCProduct[]);
+  const products = allProducts
+    .filter((p) => p.categories.some((c) => c.id === cat.id))
+    .slice(0, 24);
 
   return (
     <>

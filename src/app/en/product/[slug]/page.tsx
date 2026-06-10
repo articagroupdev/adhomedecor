@@ -6,7 +6,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ProductGallery from "@/components/ProductGallery";
 import { EN_CATEGORY_NAMES } from "@/lib/i18n";
-import { getProductBySlug, getProducts, getCategories } from "@/lib/woocommerce";
+import { getProductBySlug, getProducts, getCategories, type WCProduct } from "@/lib/woocommerce";
 
 const waUrl = (msg: string) =>
   `https://wa.me/16452481030?text=${encodeURIComponent(msg)}`;
@@ -50,12 +50,38 @@ export default async function EnProductPage({
 }) {
   const { slug } = await params;
 
-  const [product, categories] = await Promise.all([
-    getProductBySlug(slug).catch(() => null),
+  const [allProducts, categories] = await Promise.all([
+    getProducts({ per_page: 100 }).catch(() => [] as WCProduct[]),
     getCategories({ hide_empty: true }).catch(() => []),
   ]);
 
-  if (!product) notFound();
+  const product = allProducts.find((p) => p.slug === slug)
+    ?? await getProductBySlug(slug).catch(() => null);
+
+  // Only 404 when API confirmed the product doesn't exist
+  if (!product && allProducts.length > 0) notFound();
+
+  if (!product) {
+    return (
+      <>
+        <Nav />
+        <main className="min-h-[60vh] flex items-center justify-center">
+          <div className="text-center px-4">
+            <p className="font-body text-brand-muted text-lg mb-6">
+              Product is loading. Please try again in a moment.
+            </p>
+            <a
+              href="/en/catalog"
+              className="inline-flex items-center justify-center border border-brand-dark text-brand-dark px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-dark hover:text-white transition-all duration-300"
+            >
+              View catalog →
+            </a>
+          </div>
+        </main>
+        <Footer categories={[]} locale="en" />
+      </>
+    );
+  }
 
   const cat = product.categories[0];
   const catDisplayName = cat ? (EN_CATEGORY_NAMES[cat.slug] ?? cat.name) : null;

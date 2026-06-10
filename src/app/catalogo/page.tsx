@@ -192,24 +192,18 @@ export default async function CatalogoPage({
   }
 
   // Default: category listing
-  // Fetch one recent product per category in parallel for the card images
-  const categoriesWithProducts: CategoryWithProduct[] = await Promise.all(
-    categories.map(async (cat) => {
-      // Skip if the category already has its own image
-      if (cat.image) return { cat, product: null };
-      try {
-        const [product] = await getProducts({
-          category: cat.id,
-          per_page: 1,
-          orderby: "date",
-          order: "desc",
-        });
-        return { cat, product: product ?? null };
-      } catch {
-        return { cat, product: null };
-      }
-    })
-  );
+  // Single bulk fetch — same URL as homepage, shared via Next.js data cache
+  const allProducts = await getProducts({ per_page: 100 }).catch(() => [] as WCProduct[]);
+  const firstProductByCatId = new Map<number, WCProduct>();
+  for (const product of allProducts) {
+    for (const c of product.categories) {
+      if (!firstProductByCatId.has(c.id)) firstProductByCatId.set(c.id, product);
+    }
+  }
+  const categoriesWithProducts: CategoryWithProduct[] = categories.map((cat) => ({
+    cat,
+    product: cat.image ? null : (firstProductByCatId.get(cat.id) ?? null),
+  }));
 
   return (
     <>
