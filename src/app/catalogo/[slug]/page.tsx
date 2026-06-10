@@ -124,7 +124,7 @@ function CategoryHeader({ cat }: { cat: WCCategory }) {
               {cat.name}
             </h1>
             {cat.description && (
-              <p
+              <div
                 className="font-body text-white/60 text-base lg:text-lg mt-5 max-w-xl leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: cat.description }}
               />
@@ -193,8 +193,7 @@ export default async function CategoryPage({
 
   const allProducts = await getProducts({ per_page: 100 }).catch(() => [] as WCProduct[]);
   const products = allProducts
-    .filter((p) => p.categories.some((c) => c.id === cat.id))
-    .slice(0, 24);
+    .filter((p) => p.categories.some((c) => c.id === cat.id));
 
   return (
     <>

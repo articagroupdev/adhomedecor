@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     template: "%s — AYD Home Decor",
   },
   description:
-    "Your complete solution for home décor and wall coverings. Specialists in Wall Panels, PVC Sheets, Flat Panels, PU Stone and Decorative Strips. Miami, FL.",
+    "Your complete solution for home decor and wall coverings. Specialists in Wall Panels, PVC Sheets, Flat Panels, PU Stone and Decorative Strips. Miami, FL.",
   openGraph: {
     locale: "en_US",
     type: "website",
