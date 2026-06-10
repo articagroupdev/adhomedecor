@@ -324,7 +324,7 @@ export default function Nav() {
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      const base = locale === "en" ? "/en/catalog" : "/catalogo";
+      const base = locale === "en" ? "/en/catalog/search" : "/catalogo/buscar";
       window.location.href = `${base}?q=${encodeURIComponent(searchQuery.trim())}`;
     }
   };

@@ -49,3 +49,5 @@ next-env.d.ts
 /.playwright-mcp/
 /scraping-instagram/
 skills-lock.json
+
+.vercel
