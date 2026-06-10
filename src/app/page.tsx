@@ -11,6 +11,8 @@ import {
   type WCProduct,
 } from "@/lib/woocommerce";
 
+export const revalidate = 3600;
+
 // ── Constants ──────────────────────────────────────────────────────────────────
 
 const waUrl = (msg: string) =>

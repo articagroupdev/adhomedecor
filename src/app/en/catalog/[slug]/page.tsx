@@ -15,6 +15,8 @@ import {
 const waUrl = (msg: string) =>
   `https://wa.me/16452481030?text=${encodeURIComponent(msg)}`;
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   const categories = await getCategories({ hide_empty: true }).catch(() => []);
   return categories.map((cat) => ({ slug: cat.slug }));

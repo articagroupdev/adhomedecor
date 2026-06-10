@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Alata, DM_Sans } from "next/font/google";
-import { headers } from "next/headers";
 import "./globals.css";
 
 const alata = Alata({
@@ -36,17 +35,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = await headers();
-  const locale = headersList.get("x-locale") ?? "es";
-
   return (
     <html
-      lang={locale}
+      lang="es"
       className={`${alata.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-body text-brand-dark bg-white">

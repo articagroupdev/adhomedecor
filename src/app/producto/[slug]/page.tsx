@@ -8,6 +8,8 @@ import { getProductBySlug, getProducts, getCategories } from "@/lib/woocommerce"
 const waUrl = (msg: string) =>
   `https://wa.me/16452481030?text=${encodeURIComponent(msg)}`;
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   const products = await getProducts({ per_page: 100 }).catch(() => []);
   return products.map((p) => ({ slug: p.slug }));
