@@ -23,7 +23,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export default async function NosotrosPage() {
-  const categories = await getCategories();
+  const categories = await getCategories().catch(() => []);
 
   return (
     <>
