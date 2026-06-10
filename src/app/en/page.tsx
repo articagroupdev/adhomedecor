@@ -464,21 +464,29 @@ function FinalCTA() {
 
 export default async function EnHomePageEn() {
   const categories = await getCategories({ hide_empty: true }).catch(() => [] as WCCategory[]);
-  const pvcCategory = categories.find((c) => c.slug === "laminas-pvc");
 
-  const [featuredProducts, pvcProducts, ...explorerProductArrays] = await Promise.all([
-    getProducts({ featured: true, per_page: 8 }).catch(() => [] as WCProduct[]),
-    pvcCategory
-      ? getProducts({ category: pvcCategory.id, per_page: 4, orderby: "date", order: "desc" }).catch(() => [] as WCProduct[])
-      : getProducts({ per_page: 4, orderby: "date", order: "desc" }).catch(() => [] as WCProduct[]),
-    ...categories.map((cat) => getProducts({ category: cat.id, per_page: 4 }).catch(() => [] as WCProduct[])),
-  ]);
+  // Single request for all products — avoids N parallel WooCommerce calls timing out
+  const allProducts = await getProducts({ per_page: 100 }).catch(() => [] as WCProduct[]);
 
-  const displayProducts = featuredProducts.length > 0
-    ? featuredProducts
-    : await getProducts({ per_page: 8 }).catch(() => [] as WCProduct[]);
+  // Group by category ID in memory
+  const productsByCatId = new Map<number, WCProduct[]>();
+  for (const product of allProducts) {
+    for (const cat of product.categories) {
+      if (!productsByCatId.has(cat.id)) productsByCatId.set(cat.id, []);
+      productsByCatId.get(cat.id)!.push(product);
+    }
+  }
 
-  const productsBySlug = Object.fromEntries(categories.map((cat, i) => [cat.slug, explorerProductArrays[i] ?? []]));
+  const pvcCategory = categories.find((c) => c.slug === "laminas-pvc" || c.slug === "laminas-de-pvc");
+  const pvcProducts = pvcCategory
+    ? (productsByCatId.get(pvcCategory.id) ?? []).slice(0, 4)
+    : allProducts.slice(0, 4);
+
+  const displayProducts = allProducts.slice(0, 8);
+
+  const productsBySlug = Object.fromEntries(
+    categories.map((cat) => [cat.slug, (productsByCatId.get(cat.id) ?? []).slice(0, 4)])
+  );
   const explorerTabs = categories.map((cat) => ({ slug: cat.slug, label: EN_CATEGORY_NAMES[cat.slug] ?? cat.name }));
 
   return (

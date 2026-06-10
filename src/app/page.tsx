@@ -769,27 +769,27 @@ export default async function HomePage() {
   // Step 1: fetch categories first (we need IDs for product queries)
   const categories = await getCategories({ hide_empty: true }).catch(() => [] as WCCategory[]);
 
-  // Step 2: resolve IDs for parallel fetches (all categories for explorer)
-  const pvcCategory = categories.find((c) => c.slug === "laminas-de-pvc");
+  // Single request for all products — avoids N parallel WooCommerce calls timing out
+  const allProducts = await getProducts({ per_page: 100 }).catch(() => [] as WCProduct[]);
 
-  // Step 3: parallel fetches — 4 sample products per every category
-  const [featuredProducts, pvcProducts, ...explorerProductArrays] = await Promise.all([
-    getProducts({ featured: true, per_page: 8 }).catch(() => [] as WCProduct[]),
-    pvcCategory
-      ? getProducts({ category: pvcCategory.id, per_page: 4, orderby: "date", order: "desc" }).catch(() => [] as WCProduct[])
-      : getProducts({ per_page: 4, orderby: "date", order: "desc" }).catch(() => [] as WCProduct[]),
-    ...categories.map((cat) =>
-      getProducts({ category: cat.id, per_page: 4 }).catch(() => [] as WCProduct[])
-    ),
-  ]);
+  // Group by category ID in memory
+  const productsByCatId = new Map<number, WCProduct[]>();
+  for (const product of allProducts) {
+    for (const cat of product.categories) {
+      if (!productsByCatId.has(cat.id)) productsByCatId.set(cat.id, []);
+      productsByCatId.get(cat.id)!.push(product);
+    }
+  }
 
-  const displayProducts =
-    featuredProducts.length > 0
-      ? featuredProducts
-      : await getProducts({ per_page: 8 }).catch(() => [] as WCProduct[]);
+  const pvcCategory = categories.find((c) => c.slug === "laminas-pvc" || c.slug === "laminas-de-pvc");
+  const pvcProducts = pvcCategory
+    ? (productsByCatId.get(pvcCategory.id) ?? []).slice(0, 4)
+    : allProducts.slice(0, 4);
+
+  const displayProducts = allProducts.slice(0, 8);
 
   const productsBySlug = Object.fromEntries(
-    categories.map((cat, i) => [cat.slug, explorerProductArrays[i] ?? []])
+    categories.map((cat) => [cat.slug, (productsByCatId.get(cat.id) ?? []).slice(0, 4)])
   );
   const explorerTabs = categories.map((cat) => ({ slug: cat.slug, label: cat.name }));
 
