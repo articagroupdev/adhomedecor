@@ -117,7 +117,6 @@ export default function Footer({ categories, locale = "es" }: { categories: WCCa
                 </svg>
                 <div className="flex flex-col gap-1">
                   <a href="tel:+16452481030" className="font-body text-sm text-white/55 hover:text-white transition-colors duration-200">+1 (645) 248-1030</a>
-                  <a href="tel:+17869068062" className="font-body text-sm text-white/55 hover:text-white transition-colors duration-200">+1 (786) 906-8062</a>
                 </div>
               </li>
               <li className="flex items-start gap-3">

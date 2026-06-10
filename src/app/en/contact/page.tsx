@@ -35,9 +35,6 @@ const contactItems = [
         <a href="tel:+16452481030" className="font-body text-brand-muted text-sm hover:text-brand-orange transition-colors block">
           +1 (645) 248-1030
         </a>
-        <a href="tel:+17869068062" className="font-body text-brand-muted text-sm hover:text-brand-orange transition-colors block">
-          +1 (786) 906-8062
-        </a>
       </div>
     ),
   },
