@@ -26,10 +26,10 @@ const waUrl = (msg: string) =>
 const DEFAULT_WA = waUrl("Hello, I'm interested in learning more about your products");
 
 const BENTO_ITEMS = [
-  { slug: "laminas-pvc",         label: "PVC Sheets",         img: "/img/cat-laminas-pvc.jpg" },
+  { slug: "laminas-de-pvc",      label: "PVC Sheets",         img: "/img/cat-laminas-pvc.jpg" },
   { slug: "wallpanels-exterior", label: "Exterior Wallpanels", img: "/img/cat-wallpanels-exterior.jpg" },
   { slug: "wallpanels-interior", label: "Interior Wallpanels", img: "/img/cat-wallpanels-interior.jpg" },
-  { slug: "pu-stone",            label: "PU Stone",            img: "/img/cat-pu-stone.jpg" },
+  { slug: "pu-stone-piedra",     label: "PU Stone",            img: "/img/cat-pu-stone.jpg" },
   { slug: "flat-panels",         label: "Flat Panels",         img: "/img/cat-flat-panels.jpg" },
 ] as const;
 
