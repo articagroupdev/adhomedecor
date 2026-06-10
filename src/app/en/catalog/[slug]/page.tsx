@@ -12,6 +12,8 @@ import {
   type WCCategory,
 } from "@/lib/woocommerce";
 
+const KNOWN_SLUGS = Object.keys(EN_CATEGORY_NAMES);
+
 const waUrl = (msg: string) =>
   `https://wa.me/16452481030?text=${encodeURIComponent(msg)}`;
 
@@ -19,7 +21,10 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const categories = await getCategories({ hide_empty: true }).catch(() => []);
-  return categories.map((cat) => ({ slug: cat.slug }));
+  const apiSlugs = categories.map((c) => c.slug);
+  // Always pre-render known slugs so the routes exist even if WooCommerce is slow at build time
+  const merged = [...new Set([...apiSlugs, ...KNOWN_SLUGS])];
+  return merged.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -137,14 +142,55 @@ export default async function EnCategoryPage({
 }) {
   const { slug } = await params;
 
-  const [cat, allCategories] = await Promise.all([
-    getCategoryBySlug(slug).catch(() => null),
-    getCategories({ hide_empty: true }).catch(() => []),
-  ]);
+  // Load full category list (likely already in data cache from the same request path)
+  const allCategories = await getCategories({ hide_empty: true }).catch(() => []);
+  const cat = allCategories.find((c) => c.slug === slug)
+    ?? await getCategoryBySlug(slug).catch(() => null);
 
-  if (!cat) notFound();
+  // Only 404 when the API responded and confirmed the slug doesn't exist.
+  // If allCategories is empty the API failed — render a graceful fallback instead
+  // of caching a permanent 404 for 1 hour.
+  if (!cat && allCategories.length > 0) notFound();
 
-  const catDisplayName = EN_CATEGORY_NAMES[cat.slug] ?? cat.name;
+  const catDisplayName = cat
+    ? (EN_CATEGORY_NAMES[cat.slug] ?? cat.name)
+    : (EN_CATEGORY_NAMES[slug] ?? slug);
+
+  if (!cat) {
+    return (
+      <>
+        <Nav />
+        <main>
+          <section className="relative bg-brand-footer py-16 lg:py-24 overflow-hidden">
+            <div className="absolute inset-0 z-0">
+              <Image src="/img/productos.webp" alt="Wall covering products" fill priority className="object-cover" />
+              <div className="absolute inset-0 bg-black/70" />
+            </div>
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-16 xl:px-24">
+              <nav className="flex items-center gap-2 font-body text-xs uppercase tracking-widest text-white/40 mb-8">
+                <a href="/en" className="hover:text-white transition-colors">Home</a>
+                <span>·</span>
+                <a href="/en/catalog" className="hover:text-white transition-colors">Catalog</a>
+                <span>·</span>
+                <span className="text-brand-orange">{catDisplayName}</span>
+              </nav>
+              <h1 className="font-heading text-white text-4xl lg:text-6xl uppercase tracking-wide leading-tight">{catDisplayName}</h1>
+            </div>
+          </section>
+          <section className="py-20 lg:py-28">
+            <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 xl:px-24 text-center">
+              <p className="font-body text-brand-muted text-lg mb-8">Products are loading. Please try again in a moment.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/en/catalog" className="inline-flex items-center justify-center border border-brand-dark text-brand-dark px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-dark hover:text-white transition-all duration-300">View full catalog →</a>
+                <a href={`https://wa.me/16452481030?text=${encodeURIComponent(`Hello, I'm interested in ${catDisplayName}`)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-brand-orange text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-orange-hover transition-colors duration-300">Quote on WhatsApp →</a>
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer categories={allCategories} locale="en" />
+      </>
+    );
+  }
 
   const products = await getProducts({
     category: cat.id,

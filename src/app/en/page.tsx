@@ -7,6 +7,7 @@ import HeroSlider from "@/components/HeroSlider";
 import ProductExplorer from "@/components/ProductExplorer";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import Footer from "@/components/Footer";
+import { EN_CATEGORY_NAMES } from "@/lib/i18n";
 import {
   getCategories,
   getProducts,
@@ -74,7 +75,7 @@ function Hero() {
             Miami, Florida · Wall Covering Specialists
           </p>
           <h1 className="font-heading text-white text-4xl sm:text-5xl lg:text-7xl leading-[1.02] tracking-tight mb-6">
-            THE ULTIMATE SOLUTION FOR YOUR HOME DÉCOR
+            THE ULTIMATE SOLUTION FOR YOUR HOME DECOR
           </h1>
           <p className="font-body text-white/75 text-lg leading-relaxed mb-10 max-w-lg">
             We specialize in wall coverings. Find the widest variety of
@@ -478,7 +479,7 @@ export default async function EnHomePageEn() {
     : await getProducts({ per_page: 8 }).catch(() => [] as WCProduct[]);
 
   const productsBySlug = Object.fromEntries(categories.map((cat, i) => [cat.slug, explorerProductArrays[i] ?? []]));
-  const explorerTabs = categories.map((cat) => ({ slug: cat.slug, label: cat.name }));
+  const explorerTabs = categories.map((cat) => ({ slug: cat.slug, label: EN_CATEGORY_NAMES[cat.slug] ?? cat.name }));
 
   return (
     <>

@@ -38,6 +38,7 @@ export const EN_CATEGORY_NAMES: Record<string, string> = {
   "pu-stone-piedra":        "PU Stone",
   "liston-decorativo":      "Decorative Strips",
   "corner-para-wallpanels": "Corner for Wallpanels",
+  "laminas-pvc":            "PVC Sheets",
   "sitema-de-luces":        "Lighting System",
   "grama-artificial":       "Artificial Grass",
   "herramientas":           "Tools",
