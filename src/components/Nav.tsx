@@ -653,7 +653,7 @@ export default function Nav() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={locale === "en" ? "E.g. wallpanel, PVC sheet, stone..." : "Ej. wallpanel, lámina PVC, piedra..."}
-                className="flex-1 font-heading text-2xl text-brand-dark bg-transparent outline-none placeholder:text-stone-300 tracking-tight"
+                className="flex-1 font-heading text-2xl text-brand-dark bg-transparent outline-none placeholder:text-transparent sm:placeholder:text-stone-300 tracking-tight"
               />
               {searchQuery && (
                 <button type="button" onClick={() => setSearchQuery("")} className="p-1 text-brand-muted hover:text-brand-dark transition-colors flex-shrink-0" aria-label={locale === "en" ? "Clear" : "Limpiar"}>
