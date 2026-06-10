@@ -33,7 +33,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const cat = await getCategoryBySlug(slug).catch(() => null);
+  // Use getCategories (same cached bulk call used by the page component)
+  const categories = await getCategories({ hide_empty: true }).catch(() => []);
+  const cat = categories.find((c) => c.slug === slug) ?? null;
   if (!cat) return { title: "Category" };
   const displayName = EN_CATEGORY_NAMES[cat.slug] ?? cat.name;
   return {
@@ -192,7 +194,9 @@ export default async function EnCategoryPage({
     );
   }
 
-  const products = await getProducts({ per_page: 100, category: cat.id, fields: "id,name,slug,images,categories" }).catch(() => [] as WCProduct[]);
+  // Bulk fetch — same URL as /en/catalog, shared by Next.js data cache across all category pages
+  const allProducts = await getProducts({ per_page: 100 }).catch(() => [] as WCProduct[]);
+  const products = allProducts.filter((p) => p.categories.some((c) => c.id === cat.id));
 
   return (
     <>
