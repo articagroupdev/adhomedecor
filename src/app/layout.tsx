@@ -17,8 +17,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "AD Home Decor",
-    template: "%s — AD Home Decor",
+    default: "AYD Home Decor",
+    template: "%s — AYD Home Decor",
   },
   description:
     "La solución integral en decoración de tus espacios. Especialistas en Wall Panels, Láminas de PVC, Flat Panels, PU Stone y Listones Decorativos. Miami, FL.",
@@ -27,11 +27,20 @@ export const metadata: Metadata = {
     apple: "/img/logo.png",
   },
   openGraph: {
-    title: "AD Home Decor",
+    siteName: "AYD Home Decor",
+    title: "AYD Home Decor — Especialistas en Revestimientos, Miami FL",
     description:
-      "Especialistas en revestimientos modernos para interiores y exteriores. Miami, Florida.",
+      "La solución integral en decoración de tus espacios. Especialistas en Wall Panels, Láminas de PVC, Flat Panels y PU Stone. Miami, Florida.",
     locale: "es_US",
     type: "website",
+    images: [
+      {
+        url: "/img/productos.webp",
+        width: 1200,
+        height: 630,
+        alt: "AYD Home Decor — Revestimientos premium Miami FL",
+      },
+    ],
   },
 };
 
