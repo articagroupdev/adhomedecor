@@ -284,8 +284,8 @@ export default function Nav() {
   const quickSearchLinks = locale === "en" ? quickSearchLinksEn : quickSearchLinksEs;
 
   const utilityLinks = locale === "en"
-    ? [{ label: "About", href: "/en/about" }, { label: "FAQ", href: "/en/faq" }, { label: "Contact", href: "/en/contact" }]
-    : [{ label: "Nosotros", href: "/nosotros" }, { label: "FAQ", href: "/faq" }, { label: "Contacto", href: "/contacto" }];
+    ? [{ label: "Catalog", href: "/en/catalog" }, { label: "About", href: "/en/about" }, { label: "FAQ", href: "/en/faq" }, { label: "Contact", href: "/en/contact" }]
+    : [{ label: "Catálogo", href: "/catalogo" }, { label: "Nosotros", href: "/nosotros" }, { label: "FAQ", href: "/faq" }, { label: "Contacto", href: "/contacto" }];
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
