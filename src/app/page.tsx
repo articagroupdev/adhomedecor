@@ -525,7 +525,7 @@ function CollectionSpotlight() {
           <div className="relative w-full lg:w-[55%] aspect-[4/3] lg:aspect-auto lg:h-[500px] overflow-hidden flex-shrink-0">
             <Image
               src="/img/Wallpanels Interior.webp"
-              alt="Wallpanels Interior — AYD Home Decor"
+              alt="Wallpanels Interior — AD Home Decor"
               fill
               sizes="(max-width: 1024px) 100vw, 55vw"
               className="object-cover"
@@ -566,7 +566,7 @@ function CollectionSpotlight() {
           <div className="relative w-full lg:w-[55%] aspect-[4/3] lg:aspect-auto lg:h-[500px] overflow-hidden flex-shrink-0">
             <Image
               src="/img/Láminas de PVC.webp"
-              alt="Láminas de PVC — AYD Home Decor"
+              alt="Láminas de PVC — AD Home Decor"
               fill
               sizes="(max-width: 1024px) 100vw, 55vw"
               className="object-cover"

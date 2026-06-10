@@ -8,7 +8,7 @@ import { getCategories, type WCCategory } from "@/lib/woocommerce";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Answers to your questions about PVC panels, wall panels, installation, shipping and more. AYD Home Decor · Miami, Florida.",
+    "Answers to your questions about PVC panels, wall panels, installation, shipping and more. AD Home Decor · Miami, Florida.",
 };
 
 const waUrl = (msg: string) =>
@@ -89,7 +89,7 @@ export default async function EnFaqPage() {
           <div className="absolute inset-0">
             <Image
               src="/img/IMG_8084.webp"
-              alt="AYD Home Decor showroom"
+              alt="AD Home Decor showroom"
               fill
               className="object-cover object-center"
               priority

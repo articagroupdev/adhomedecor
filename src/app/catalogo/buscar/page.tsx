@@ -6,7 +6,7 @@ import { getCategories, getProducts, type WCCategory, type WCProduct } from "@/l
 
 export const metadata: Metadata = {
   title: "Búsqueda — Catálogo",
-  description: "Resultados de búsqueda en el catálogo de AYD Home Decor.",
+  description: "Resultados de búsqueda en el catálogo de AD Home Decor.",
 };
 
 const waUrl = (msg: string) =>
@@ -80,7 +80,7 @@ export default async function BuscarPage({
       <main>
         <section className="relative bg-brand-footer py-20 lg:py-28 overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <Image src="/img/IMG_8085.webp" alt="Catálogo AYD Home Decor" fill priority className="object-cover" />
+            <Image src="/img/IMG_8085.webp" alt="Catálogo AD Home Decor" fill priority className="object-cover" />
             <div className="absolute inset-0 bg-black/65" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-16 xl:px-24">

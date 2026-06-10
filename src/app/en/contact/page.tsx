@@ -97,7 +97,7 @@ export default async function EnContactPage() {
           <div className="absolute inset-0">
             <Image
               src="/img/DSC02516-2.webp"
-              alt="AYD Home Decor contact"
+              alt="AD Home Decor contact"
               fill
               className="object-cover object-center"
               priority
@@ -229,7 +229,7 @@ export default async function EnContactPage() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="AYD Home Decor Location"
+                  title="AD Home Decor Location"
                 />
               </div>
             </div>

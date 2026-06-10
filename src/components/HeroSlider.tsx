@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const slides = [
-  { src: "/img/IMG_0403.JPG.jpeg", alt: "AYD Home Decor — wallpanels decorativos" },
-  { src: "/img/IMG_0402.JPG.jpeg", alt: "AYD Home Decor — decoración de espacios" },
+  { src: "/img/IMG_0403.JPG.jpeg", alt: "AD Home Decor — wallpanels decorativos" },
+  { src: "/img/IMG_0402.JPG.jpeg", alt: "AD Home Decor — decoración de espacios" },
 ];
 
 export default function HeroSlider() {

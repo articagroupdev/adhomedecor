@@ -99,7 +99,7 @@ export default async function CatalogoPage() {
           <div className="absolute inset-0 z-0">
             <Image
               src="/img/IMG_8085.webp"
-              alt="Catálogo AYD Home Decor"
+              alt="Catálogo AD Home Decor"
               fill
               priority
               className="object-cover"

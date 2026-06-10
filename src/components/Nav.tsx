@@ -416,10 +416,10 @@ export default function Nav() {
           <div className="flex items-center h-[64px]">
             {/* Left — logo */}
             <div className="flex-1 flex items-center">
-              <Link href={locale === "en" ? "/en" : "/"} aria-label="AYD Home Decor — Inicio">
+              <Link href={locale === "en" ? "/en" : "/"} aria-label="AD Home Decor — Inicio">
                 <Image
                   src="/img/logo-home-decor.webp"
-                  alt="AYD Home Decor"
+                  alt="AD Home Decor"
                   width={160}
                   height={56}
                   priority
@@ -531,7 +531,7 @@ export default function Nav() {
         <Link href={locale === "en" ? "/en" : "/"} onClick={() => setMenuOpen(false)}>
           <Image
             src="/img/logo-home-decor.webp"
-            alt="AYD Home Decor"
+            alt="AD Home Decor"
             width={120}
             height={42}
             style={{ width: "auto", height: "38px" }}

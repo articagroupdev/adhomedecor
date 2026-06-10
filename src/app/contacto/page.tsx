@@ -97,7 +97,7 @@ export default async function ContactoPage() {
           <div className="absolute inset-0">
             <Image
               src="/img/DSC02516-2.webp"
-              alt="AYD Home Decor contacto"
+              alt="AD Home Decor contacto"
               fill
               className="object-cover object-center"
               priority
@@ -230,7 +230,7 @@ export default async function ContactoPage() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Ubicación AYD Home Decor"
+                  title="Ubicación AD Home Decor"
                 />
               </div>
             </div>

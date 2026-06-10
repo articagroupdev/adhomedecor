@@ -8,7 +8,7 @@ import { getCategories } from "@/lib/woocommerce";
 export const metadata: Metadata = {
   title: "Nosotros",
   description:
-    "Conoce a AYD Home Decor, especialistas en revestimientos de alta calidad en Miami, Florida. Nuestra misión, visión y valores.",
+    "Conoce a AD Home Decor, especialistas en revestimientos de alta calidad en Miami, Florida. Nuestra misión, visión y valores.",
 };
 
 const waUrl = (msg: string) =>
@@ -35,7 +35,7 @@ export default async function NosotrosPage() {
           <div className="absolute inset-0">
             <Image
               src="/img/DSC02556.webp"
-              alt="AYD Home Decor showroom"
+              alt="AD Home Decor showroom"
               fill
               className="object-cover object-center"
               priority
@@ -82,7 +82,7 @@ export default async function NosotrosPage() {
                   Pasión por el diseño interior y la innovación en cada espacio
                 </h2>
                 <p className="font-body text-white/55 text-[15px] leading-relaxed mb-8 max-w-md">
-                  En AYD Home Decor nacimos de la convicción de que cada hogar merece los mejores
+                  En AD Home Decor nacimos de la convicción de que cada hogar merece los mejores
                   acabados. Somos especialistas en seleccionar los mejores revestimientos para ofrecer
                   soluciones que combinen lujo, funcionalidad y durabilidad en cada proyecto de Miami, Florida.
                 </p>
@@ -95,10 +95,10 @@ export default async function NosotrosPage() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative aspect-[3/4] overflow-hidden">
-                  <Image src="/img/DXCUeSNjpRI_3.webp" alt="AYD Home Decor" fill className="object-cover" />
+                  <Image src="/img/DXCUeSNjpRI_3.webp" alt="AD Home Decor" fill className="object-cover" />
                 </div>
                 <div className="relative aspect-[3/4] overflow-hidden mt-10">
-                  <Image src="/img/DXCUeSNjpRI_6.webp" alt="AYD Home Decor" fill className="object-cover" />
+                  <Image src="/img/DXCUeSNjpRI_6.webp" alt="AD Home Decor" fill className="object-cover" />
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default async function NosotrosPage() {
           <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 xl:px-24 py-24 lg:py-32">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
               <div className="relative aspect-video lg:aspect-[4/3] overflow-hidden order-2 lg:order-1">
-                <Image src="/img/DXCUeSNjpRI_17.webp" alt="AYD Home Decor" fill className="object-cover" />
+                <Image src="/img/DXCUeSNjpRI_17.webp" alt="AD Home Decor" fill className="object-cover" />
               </div>
               <div className="order-1 lg:order-2">
                 <p className="font-body text-white/25 text-sm tracking-widest mb-8">02</p>
@@ -157,7 +157,7 @@ export default async function NosotrosPage() {
                 </a>
               </div>
               <div className="relative aspect-video lg:aspect-[4/3] overflow-hidden">
-                <Image src="/img/DXCUeSNjpRI_18.webp" alt="AYD Home Decor" fill className="object-cover" />
+                <Image src="/img/DXCUeSNjpRI_18.webp" alt="AD Home Decor" fill className="object-cover" />
               </div>
             </div>
           </div>

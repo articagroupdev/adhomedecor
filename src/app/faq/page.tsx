@@ -90,7 +90,7 @@ export default async function FaqPage() {
           <div className="absolute inset-0">
             <Image
               src="/img/IMG_8084.webp"
-              alt="AYD Home Decor showroom"
+              alt="AD Home Decor showroom"
               fill
               className="object-cover object-center"
               priority

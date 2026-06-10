@@ -8,7 +8,7 @@ import { getCategories } from "@/lib/woocommerce";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Meet AYD Home Decor, specialists in premium wall coverings in Miami, Florida. Our mission, vision and values.",
+    "Meet AD Home Decor, specialists in premium wall coverings in Miami, Florida. Our mission, vision and values.",
 };
 
 const waUrl = (msg: string) =>
@@ -35,7 +35,7 @@ export default async function EnAboutPage() {
           <div className="absolute inset-0">
             <Image
               src="/img/DSC02556.webp"
-              alt="AYD Home Decor showroom"
+              alt="AD Home Decor showroom"
               fill
               className="object-cover object-center"
               priority
@@ -79,7 +79,7 @@ export default async function EnAboutPage() {
                   Passion for interior design and innovation in every space
                 </h2>
                 <p className="font-body text-white/55 text-[15px] leading-relaxed mb-8 max-w-md">
-                  AYD Home Decor was born from the conviction that every home deserves the best finishes.
+                  AD Home Decor was born from the conviction that every home deserves the best finishes.
                   We are specialists in selecting the finest wall coverings to offer solutions that combine
                   luxury, functionality and durability in every project in Miami, Florida.
                 </p>
@@ -92,10 +92,10 @@ export default async function EnAboutPage() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative aspect-[3/4] overflow-hidden">
-                  <Image src="/img/DXCUeSNjpRI_3.webp" alt="AYD Home Decor" fill className="object-cover" />
+                  <Image src="/img/DXCUeSNjpRI_3.webp" alt="AD Home Decor" fill className="object-cover" />
                 </div>
                 <div className="relative aspect-[3/4] overflow-hidden mt-10">
-                  <Image src="/img/DXCUeSNjpRI_6.webp" alt="AYD Home Decor" fill className="object-cover" />
+                  <Image src="/img/DXCUeSNjpRI_6.webp" alt="AD Home Decor" fill className="object-cover" />
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@ export default async function EnAboutPage() {
           <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 xl:px-24 py-24 lg:py-32">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
               <div className="relative aspect-video lg:aspect-[4/3] overflow-hidden order-2 lg:order-1">
-                <Image src="/img/DXCUeSNjpRI_17.webp" alt="AYD Home Decor" fill className="object-cover" />
+                <Image src="/img/DXCUeSNjpRI_17.webp" alt="AD Home Decor" fill className="object-cover" />
               </div>
               <div className="order-1 lg:order-2">
                 <p className="font-body text-white/25 text-sm tracking-widest mb-8">02</p>
@@ -154,7 +154,7 @@ export default async function EnAboutPage() {
                 </a>
               </div>
               <div className="relative aspect-video lg:aspect-[4/3] overflow-hidden">
-                <Image src="/img/DXCUeSNjpRI_18.webp" alt="AYD Home Decor" fill className="object-cover" />
+                <Image src="/img/DXCUeSNjpRI_18.webp" alt="AD Home Decor" fill className="object-cover" />
               </div>
             </div>
           </div>
