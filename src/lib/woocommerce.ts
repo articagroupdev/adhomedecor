@@ -76,6 +76,7 @@ export interface WCProduct {
   slug: string;
   description: string;
   short_description: string;
+  description_en: string;
   images: WCImage[];
   categories: Array<{ id: number; name: string; slug: string }>;
   attributes: Array<{ id: number; name: string; options: string[] }>;

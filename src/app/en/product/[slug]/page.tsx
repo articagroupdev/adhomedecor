@@ -27,7 +27,7 @@ export async function generateMetadata({
   return {
     title: product.name,
     description:
-      product.short_description.replace(/<[^>]+>/g, "").slice(0, 160) ||
+      (product.description_en || product.short_description).replace(/<[^>]+>/g, "").slice(0, 160) ||
       `${product.name} — Premium wall coverings in Miami, FL.`,
     openGraph: {
       images: product.images[0] ? [{ url: product.images[0].src }] : [],
@@ -125,6 +125,13 @@ export default async function EnProductPage({
                 {product.name}
               </h1>
 
+              {product.description_en && (
+                <div
+                  className="font-body text-brand-muted text-sm leading-relaxed mb-8 prose prose-sm max-w-none"
+                  dangerouslySetInnerHTML={{ __html: product.description_en }}
+                />
+              )}
+
               {product.attributes.length > 0 && (
                 <div className="border-t border-brand-border pt-6 mb-8 space-y-3">
                   {product.attributes.map((attr) => (
@@ -173,7 +180,7 @@ export default async function EnProductPage({
                 )}
               </div>
 
-              {/* product.description omitted — WooCommerce content is in Spanish */}
+              {/* description_en shown above — translated via AYD Translate plugin */}
             </div>
           </div>
         </div>
