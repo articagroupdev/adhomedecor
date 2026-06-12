@@ -43,6 +43,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# deploy trigger (runtime file, never commit)
+.restart
+
 # local dev / AI tooling
 /.agents/
 /.claude/
