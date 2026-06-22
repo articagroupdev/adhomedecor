@@ -331,7 +331,7 @@ function CollectionSpotlight() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 xl:px-24 space-y-16 lg:space-y-24">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
           <div className="relative w-full lg:w-[55%] aspect-[4/3] lg:aspect-auto lg:h-[500px] overflow-hidden flex-shrink-0">
-            <Image src="/img/Wallpanels Interior.webp" alt="Interior Wallpanels — AD Home Decor" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+            <Image src="/img/wallpanels-interior-spotlight.webp" alt="Interior Wallpanels — AD Home Decor" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
           </div>
           <div className="w-full lg:w-[45%]">
             <p className="font-body text-xs uppercase tracking-[0.2em] text-brand-orange mb-4">Featured Collection</p>
@@ -347,7 +347,7 @@ function CollectionSpotlight() {
         </div>
         <div className="flex flex-col lg:flex-row-reverse gap-10 lg:gap-20 items-center">
           <div className="relative w-full lg:w-[55%] aspect-[4/3] lg:aspect-auto lg:h-[500px] overflow-hidden flex-shrink-0">
-            <Image src="/img/Láminas de PVC.webp" alt="PVC Sheets — AD Home Decor" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
+            <Image src="/img/laminas-de-pvc-spotlight.webp" alt="PVC Sheets — AD Home Decor" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
           </div>
           <div className="w-full lg:w-[45%]">
             <p className="font-body text-xs uppercase tracking-[0.2em] text-brand-orange mb-4">Premium Line</p>

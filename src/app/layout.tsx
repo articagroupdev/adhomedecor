@@ -16,7 +16,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://adhomedecor.vercel.app"),
+  metadataBase: new URL("https://aydhomedecor.com"),
   title: {
     default: "AD Home Decor",
     template: "%s — AD Home Decor",
