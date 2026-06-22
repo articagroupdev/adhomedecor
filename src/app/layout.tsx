@@ -46,6 +46,64 @@ export const metadata: Metadata = {
   },
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://aydhomedecor.com/#organization",
+      "name": "AD Home Decor",
+      "url": "https://aydhomedecor.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://aydhomedecor.com/img/logo-home-decor.webp",
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-645-248-1030",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Spanish"],
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8524 NW 72nd St",
+        "addressLocality": "Miami",
+        "addressRegion": "FL",
+        "postalCode": "33166",
+        "addressCountry": "US",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://aydhomedecor.com/#website",
+      "url": "https://aydhomedecor.com",
+      "name": "AD Home Decor",
+      "description":
+        "Especialistas en revestimientos premium: Wall Panels, Láminas de PVC, Flat Panels y PU Stone. Miami, FL.",
+      "publisher": { "@id": "https://aydhomedecor.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate":
+            "https://aydhomedecor.com/catalogo/buscar?q={search_term_string}",
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "SiteLinksSearchBox",
+      "url": "https://aydhomedecor.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target":
+          "https://aydhomedecor.com/catalogo/buscar?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -56,6 +114,12 @@ export default function RootLayout({
       lang="es"
       className={`${alata.variable} ${dmSans.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-body text-brand-dark bg-white">
         {children}
       </body>
