@@ -20,9 +20,9 @@
 /.next/
 /out/
 
-# generated at build time — never commit
-/public/search-data.json
-/src/data/
+# search-data regenerated locally, committed so CI doesn't need API access
+# /public/search-data.json
+# /src/data/
 
 # production
 /build
