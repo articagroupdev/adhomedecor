@@ -17,6 +17,9 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aydhomedecor.com"),
+  verification: {
+    google: "TRBkJRny3yqb8x-rdf_WwVZnlCn4fRtotcI3q7Wy4Rk",
+  },
   title: {
     default: "AD Home Decor",
     template: "%s — AD Home Decor",
