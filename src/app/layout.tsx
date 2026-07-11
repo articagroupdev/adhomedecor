@@ -26,6 +26,16 @@ export const metadata: Metadata = {
   },
   description:
     "La solución integral en decoración de tus espacios. Especialistas en Wall Panels, Láminas de PVC, Flat Panels, PU Stone y Listones Decorativos. Miami, FL.",
+  keywords: [
+    "wall panels Miami",
+    "láminas de PVC Miami",
+    "flat panels decorativos",
+    "PU stone revestimiento",
+    "listones decorativos",
+    "revestimientos interiores Miami",
+    "AD Home Decor",
+    "decoración de interiores Miami",
+  ],
   icons: {
     icon: "/img/logo.png",
     apple: "/img/logo.png",
