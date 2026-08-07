@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Alata, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const alata = Alata({
@@ -129,6 +130,16 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17865925990"
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-17865925990');`}
+        </Script>
       </head>
       <body className="min-h-full flex flex-col font-body text-brand-dark bg-white">
         {children}
