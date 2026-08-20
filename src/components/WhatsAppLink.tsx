@@ -25,11 +25,20 @@ export default function WhatsAppLink({
     onClick?.(e);
 
     if (typeof window.gtag === "function") {
+      let opened = false;
+      const openOnce = () => {
+        if (opened) return;
+        opened = true;
+        window.open(href, "_blank");
+      };
+
+      // Fallback in case the conversion beacon is blocked (ad blockers,
+      // slow network) and event_callback never fires.
+      window.setTimeout(openOnce, 1000);
+
       window.gtag("event", "conversion", {
         send_to: CONVERSION_SEND_TO,
-        event_callback: () => {
-          window.open(href, "_blank");
-        },
+        event_callback: openOnce,
       });
     } else {
       window.open(href, "_blank");
