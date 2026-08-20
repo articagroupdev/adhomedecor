@@ -41,5 +41,5 @@ jobs:
           nslookup "$FTP_HOST" || true
           echo "--- TCP connect test (port 21) ---"
           nc -zv -w 15 "$FTP_HOST" 21 || true
-          echo "--- lftp mirror ---"
-          lftp -u "$FTP_USERNAME,$FTP_PASSWORD" "$FTP_HOST" -e "set ftp:ssl-allow yes; set ssl:verify-certificate no; set net:timeout 30; set net:max-retries 5; set net:reconnect-interval-base 10; mirror --reverse --no-perms --parallel=1 ./out/ ./; bye"
+          echo "--- lftp mirror (debug) ---"
+          lftp -u "$FTP_USERNAME,$FTP_PASSWORD" "$FTP_HOST" -e "debug 5; set ftp:ssl-allow yes; set ssl:verify-certificate no; set net:timeout 20; set net:max-retries 2; set net:reconnect-interval-base 5; mirror --reverse --no-perms --parallel=1 ./out/ ./; bye"
