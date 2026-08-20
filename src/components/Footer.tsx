@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { WCCategory } from "@/lib/woocommerce";
 import { EN_CATEGORY_NAMES } from "@/lib/i18n";
+import WhatsAppLink from "@/components/WhatsAppLink";
 
 const WA = `https://wa.me/16452481030?text=${encodeURIComponent("Hola, me interesa conocer más sobre sus productos")}`;
 
@@ -66,10 +67,10 @@ export default function Footer({ categories, locale = "es" }: { categories: WCCa
                   <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.82 1.56V6.79a4.85 4.85 0 01-1.05-.1z" />
                 </svg>
               </a>
-              <a href={WA} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+              <WhatsAppLink href={WA} aria-label="WhatsApp"
                 className="w-9 h-9 border border-white/20 flex items-center justify-center text-white/55 hover:border-[#25D366] hover:text-[#25D366] transition-colors duration-300">
                 <WhatsAppIcon />
-              </a>
+              </WhatsAppLink>
             </div>
           </div>
 

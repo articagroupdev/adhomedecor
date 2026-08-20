@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import WhatsAppLink from "@/components/WhatsAppLink";
 import {
   getCategories,
   getProducts,
@@ -134,15 +135,13 @@ export default async function CatalogoPage() {
                 <p className="font-body text-brand-muted text-lg">
                   Las categorías se están cargando. Intenta de nuevo en unos momentos.
                 </p>
-                <a
+                <WhatsAppLink
                   href={waUrl("Hola, me interesa conocer su catálogo")}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 mt-8 bg-[#25D366] text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-[#1da851] transition-colors"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                   Consultar por WhatsApp
-                </a>
+                </WhatsAppLink>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5">
@@ -166,15 +165,13 @@ export default async function CatalogoPage() {
             <p className="font-body text-brand-muted max-w-lg mx-auto mb-8 leading-relaxed">
               Tenemos stock adicional y productos personalizados disponibles. Escríbenos por WhatsApp y te asesoramos.
             </p>
-            <a
+            <WhatsAppLink
               href={waUrl("Hola, me interesa conocer más sobre sus productos y disponibilidad")}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-[#25D366] text-white px-10 py-4 font-body text-sm font-semibold uppercase tracking-widest hover:bg-[#1da851] transition-colors duration-300"
             >
               <WhatsAppIcon className="w-5 h-5" />
               COTIZAR POR WHATSAPP
-            </a>
+            </WhatsAppLink>
           </div>
         </section>
       </main>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import WhatsAppLink from "@/components/WhatsAppLink";
 import { EN_CATEGORY_NAMES } from "@/lib/i18n";
 import {
   getCategories,
@@ -82,14 +83,12 @@ function ProductCard({ product }: { product: WCProduct }) {
         </div>
       </a>
       <div className="px-4 pb-4 pt-2">
-        <a
+        <WhatsAppLink
           href={waUrl(`Hola, me interesa cotizar: ${product.name}`)}
-          target="_blank"
-          rel="noopener noreferrer"
           className="block w-full bg-brand-orange text-white text-center text-[10px] font-body font-semibold uppercase tracking-widest py-3 hover:bg-brand-orange-hover transition-colors duration-300"
         >
           COTIZAR →
-        </a>
+        </WhatsAppLink>
       </div>
     </div>
   );
@@ -183,7 +182,7 @@ export default async function CategoryPage({
               <p className="font-body text-brand-muted text-lg mb-8">Los productos están cargando. Por favor intenta de nuevo en un momento.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="/catalogo" className="inline-flex items-center justify-center border border-brand-dark text-brand-dark px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-dark hover:text-white transition-all duration-300">Ver catálogo completo →</a>
-                <a href={waUrl(`Hola, me interesa la categoría ${fallbackName}`)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-brand-orange text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-orange-hover transition-colors duration-300">Cotizar por WhatsApp →</a>
+                <WhatsAppLink href={waUrl(`Hola, me interesa la categoría ${fallbackName}`)} className="inline-flex items-center justify-center bg-brand-orange text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-orange-hover transition-colors duration-300">Cotizar por WhatsApp →</WhatsAppLink>
               </div>
             </div>
           </section>
@@ -210,15 +209,13 @@ export default async function CategoryPage({
                 <p className="font-body text-brand-muted text-lg mb-8">
                   No hay productos en esta categoría todavía.
                 </p>
-                <a
+                <WhatsAppLink
                   href={waUrl(`Hola, me interesa la categoría ${cat.name}`)}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-[#1da851] transition-colors"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                   Consultar disponibilidad
-                </a>
+                </WhatsAppLink>
               </div>
             ) : (
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
@@ -254,15 +251,13 @@ export default async function CategoryPage({
                   Cotización gratuita y asesoría personalizada.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a
+                  <WhatsAppLink
                     href={waUrl(`Hola, me interesa asesoría sobre ${cat.name}`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2.5 bg-[#25D366] text-white px-7 py-3.5 font-body text-xs font-semibold uppercase tracking-widest hover:bg-[#1da851] transition-colors duration-300"
                   >
                     <WhatsAppIcon className="w-4 h-4" />
                     COTIZAR POR WHATSAPP
-                  </a>
+                  </WhatsAppLink>
                   <a
                     href="/catalogo"
                     className="inline-flex items-center justify-center gap-2 border border-brand-border text-brand-dark px-7 py-3.5 font-body text-xs font-semibold uppercase tracking-widest hover:border-brand-dark transition-colors duration-300"

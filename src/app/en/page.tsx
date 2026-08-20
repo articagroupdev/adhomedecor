@@ -7,6 +7,7 @@ import HeroSlider from "@/components/HeroSlider";
 import ProductExplorer from "@/components/ProductExplorer";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import Footer from "@/components/Footer";
+import WhatsAppLink from "@/components/WhatsAppLink";
 import { EN_CATEGORY_NAMES } from "@/lib/i18n";
 import {
   getCategories,
@@ -89,15 +90,13 @@ function Hero() {
             >
               VIEW CATALOG
             </a>
-            <a
+            <WhatsAppLink
               href={DEFAULT_WA}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto border border-white text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-white/10 transition-colors duration-300"
             >
               <WhatsAppIcon className="w-4 h-4" />
               GET A QUOTE ON WHATSAPP
-            </a>
+            </WhatsAppLink>
           </div>
         </div>
       </div>
@@ -202,14 +201,12 @@ function NewArrivals({ products }: { products: WCProduct[] }) {
                     <span className="bg-white text-brand-dark font-body text-[10px] font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-sm">New</span>
                   </div>
                   <div className="absolute inset-0 flex items-end p-4 pointer-events-none group-hover:pointer-events-auto z-20">
-                    <a
+                    <WhatsAppLink
                       href={waUrl(`Hello, I'd like a quote for: ${product.name}`)}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="w-full bg-brand-orange text-white text-center font-body text-[10px] font-semibold uppercase tracking-widest py-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
                     >
                       QUOTE →
-                    </a>
+                    </WhatsAppLink>
                   </div>
                 </div>
                 <div>
@@ -341,7 +338,7 @@ function CollectionSpotlight() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a href="/en/catalog/wallpanels-interior" className="inline-flex items-center justify-center bg-brand-footer text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-orange transition-colors duration-300">VIEW COLLECTION</a>
-              <a href={DEFAULT_WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border border-brand-border text-brand-dark px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:border-brand-orange hover:text-brand-orange transition-colors duration-300">QUOTE</a>
+              <WhatsAppLink href={DEFAULT_WA} className="inline-flex items-center justify-center border border-brand-border text-brand-dark px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:border-brand-orange hover:text-brand-orange transition-colors duration-300">QUOTE</WhatsAppLink>
             </div>
           </div>
         </div>
@@ -357,7 +354,7 @@ function CollectionSpotlight() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a href="/en/catalog/laminas-pvc" className="inline-flex items-center justify-center bg-brand-footer text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-orange transition-colors duration-300">VIEW COLLECTION</a>
-              <a href={DEFAULT_WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border border-brand-border text-brand-dark px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:border-brand-orange hover:text-brand-orange transition-colors duration-300">QUOTE</a>
+              <WhatsAppLink href={DEFAULT_WA} className="inline-flex items-center justify-center border border-brand-border text-brand-dark px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:border-brand-orange hover:text-brand-orange transition-colors duration-300">QUOTE</WhatsAppLink>
             </div>
           </div>
         </div>
@@ -398,9 +395,9 @@ function FeaturedProducts({ products }: { products: WCProduct[] }) {
                   </div>
                 </a>
                 <div className="px-4 pb-4 pt-2">
-                  <a href={waUrl(`Hello, I'd like a quote for: ${product.name}`)} target="_blank" rel="noopener noreferrer" className="block w-full bg-brand-orange text-white text-center text-[10px] font-body font-semibold uppercase tracking-widest py-3 hover:bg-brand-orange-hover transition-colors duration-300">
+                  <WhatsAppLink href={waUrl(`Hello, I'd like a quote for: ${product.name}`)} className="block w-full bg-brand-orange text-white text-center text-[10px] font-body font-semibold uppercase tracking-widest py-3 hover:bg-brand-orange-hover transition-colors duration-300">
                     QUOTE →
-                  </a>
+                  </WhatsAppLink>
                 </div>
               </div>
             );
@@ -434,10 +431,10 @@ function FinalCTA() {
               Free quote. Our team guides you in the perfect selection for your project — from concept to installation.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a href={DEFAULT_WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2.5 bg-brand-orange text-white px-7 py-3.5 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-orange-hover transition-colors duration-300">
+              <WhatsAppLink href={DEFAULT_WA} className="inline-flex items-center justify-center gap-2.5 bg-brand-orange text-white px-7 py-3.5 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-orange-hover transition-colors duration-300">
                 <WhatsAppIcon className="w-4 h-4" />
                 Get a free quote
-              </a>
+              </WhatsAppLink>
               <a href="/en/catalog" className="inline-flex items-center justify-center gap-2 border border-brand-border text-brand-dark px-7 py-3.5 font-body text-xs font-semibold uppercase tracking-widest hover:border-brand-dark transition-colors duration-300">
                 View catalog →
               </a>

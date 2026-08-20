@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getOtherLocaleUrl } from "@/lib/i18n";
+import WhatsAppLink from "@/components/WhatsAppLink";
 
 // ── Constants ──────────────────────────────────────────────────────────────────
 
@@ -360,9 +361,9 @@ export default function Nav() {
                   <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.82 1.56V6.79a4.85 4.85 0 01-1.05-.1z" />
                 </svg>
               </a>
-              <a href={waUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="text-white/50 hover:text-[#25D366] transition-colors duration-200">
+              <WhatsAppLink href={waUrl} aria-label="WhatsApp" className="text-white/50 hover:text-[#25D366] transition-colors duration-200">
                 <WhatsAppIcon className="w-3.5 h-3.5" />
-              </a>
+              </WhatsAppLink>
             </div>
           </div>
         </div>
@@ -599,15 +600,13 @@ export default function Nav() {
 
       {/* CTAs at bottom */}
       <div className="flex-shrink-0 px-6 py-6 border-t border-brand-border flex flex-col gap-3">
-        <a
+        <WhatsAppLink
           href={waUrl}
-          target="_blank"
-          rel="noopener noreferrer"
           className="flex items-center justify-center gap-2.5 bg-[#25D366] text-white px-6 py-3.5 font-body text-xs font-semibold uppercase tracking-widest"
         >
           <WhatsAppIcon className="w-4 h-4" />
           {locale === "en" ? "Quote on WhatsApp" : "Cotizar por WhatsApp"}
-        </a>
+        </WhatsAppLink>
         <a
           href={`tel:${PHONE_TEL}`}
           className="flex items-center justify-center gap-2.5 border border-brand-border text-brand-dark px-6 py-3.5 font-body text-xs font-semibold uppercase tracking-widest hover:border-brand-orange hover:text-brand-orange transition-colors"

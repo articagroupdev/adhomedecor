@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import type { WCProduct } from "@/lib/woocommerce";
+import WhatsAppLink from "@/components/WhatsAppLink";
 
 interface Tab { slug: string; label: string; }
 
@@ -96,14 +97,12 @@ export default function ProductExplorer({ tabs, productsBySlug, locale = "es" }:
                     <h3 className="font-heading text-brand-dark text-[13px] uppercase tracking-wide leading-snug mb-4 line-clamp-2 min-h-[2.5rem]">
                       {product.name}
                     </h3>
-                    <a
+                    <WhatsAppLink
                       href={waMsg(product.name, locale)}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1.5 bg-brand-orange text-white text-[10px] font-body font-semibold uppercase tracking-widest py-2.5 hover:bg-brand-orange-hover transition-colors duration-200"
                     >
                       {locale === "en" ? "QUOTE →" : "COTIZAR →"}
-                    </a>
+                    </WhatsAppLink>
                   </div>
                 </div>
               );

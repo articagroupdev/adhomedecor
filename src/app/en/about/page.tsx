@@ -3,6 +3,7 @@ import Image from "next/image";
 import Nav from "@/components/Nav";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import Footer from "@/components/Footer";
+import WhatsAppLink from "@/components/WhatsAppLink";
 import { getCategories } from "@/lib/woocommerce";
 
 export const metadata: Metadata = {
@@ -144,14 +145,12 @@ export default async function EnAboutPage() {
                   for simple DIY installation — no major construction needed.
                   Transforming your spaces has never been so easy and affordable.
                 </p>
-                <a
+                <WhatsAppLink
                   href={waUrl("Hello, I'd like more information about product installation")}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="font-body text-sm text-white/70 border-b border-white/25 hover:text-white hover:border-white pb-0.5 transition-all duration-200 inline-flex items-center gap-2"
                 >
                   Consult an expert →
-                </a>
+                </WhatsAppLink>
               </div>
               <div className="relative aspect-video lg:aspect-[4/3] overflow-hidden">
                 <Image src="/img/DXCUeSNjpRI_18.webp" alt="AD Home Decor" fill className="object-cover" />
@@ -249,15 +248,13 @@ export default async function EnAboutPage() {
                   >
                     View on map →
                   </a>
-                  <a
+                  <WhatsAppLink
                     href={waUrl("Hello, I'd like to schedule a showroom visit")}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 bg-brand-orange text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-orange-hover transition-colors duration-300"
                   >
                     <WhatsAppIcon className="w-4 h-4" />
                     Schedule a visit
-                  </a>
+                  </WhatsAppLink>
                 </div>
               </div>
             </div>
@@ -326,15 +323,13 @@ export default async function EnAboutPage() {
               Get a free quote from our experts and discover how to bring luxury design to every corner of your space.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <WhatsAppLink
                 href={waUrl("Hello, I'd like to know more about your products")}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2.5 bg-brand-orange text-white px-10 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-orange-hover transition-colors duration-300"
               >
                 <WhatsAppIcon className="w-4 h-4" />
                 Quote on WhatsApp
-              </a>
+              </WhatsAppLink>
               <a
                 href="/en/catalog"
                 className="inline-flex items-center justify-center gap-2.5 border border-brand-dark text-brand-dark px-10 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-brand-dark hover:text-white transition-all duration-300"

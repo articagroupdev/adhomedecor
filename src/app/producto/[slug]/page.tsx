@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ProductGallery from "@/components/ProductGallery";
+import WhatsAppLink from "@/components/WhatsAppLink";
 import { getProductBySlug, getProducts, getCategories, type WCProduct } from "@/lib/woocommerce";
 
 const waUrl = (msg: string) =>
@@ -167,15 +168,13 @@ export default async function ProductPage({
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                <a
+                <WhatsAppLink
                   href={wa}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="flex-1 inline-flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-[#1da851] transition-colors duration-300"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                   COTIZAR POR WHATSAPP
-                </a>
+                </WhatsAppLink>
                 {cat && (
                   <a
                     href={`/catalogo/${cat.slug}`}
@@ -225,15 +224,13 @@ export default async function ProductPage({
                   personalizada para tu proyecto.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a
+                  <WhatsAppLink
                     href={wa}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2.5 bg-[#25D366] text-white px-7 py-3.5 font-body text-xs font-semibold uppercase tracking-widest hover:bg-[#1da851] transition-colors duration-300"
                   >
                     <WhatsAppIcon className="w-4 h-4" />
                     CONSULTAR AHORA
-                  </a>
+                  </WhatsAppLink>
                   <a
                     href="/catalogo"
                     className="inline-flex items-center justify-center gap-2 border border-brand-border text-brand-dark px-7 py-3.5 font-body text-xs font-semibold uppercase tracking-widest hover:border-brand-dark transition-colors duration-300"

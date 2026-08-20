@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import WhatsAppLink from "@/components/WhatsAppLink";
 import { EN_CATEGORY_NAMES } from "@/lib/i18n";
 
 interface SearchProduct {
@@ -53,14 +54,12 @@ function ProductCard({ product }: { product: SearchProduct }) {
         </div>
       </a>
       <div className="px-4 pb-4 pt-2">
-        <a
+        <WhatsAppLink
           href={waUrl(`Hello, I'd like a quote for: ${product.name}`)}
-          target="_blank"
-          rel="noopener noreferrer"
           className="block w-full bg-brand-orange text-white text-center text-[10px] font-body font-semibold uppercase tracking-widest py-3 hover:bg-brand-orange-hover transition-colors duration-300"
         >
           QUOTE →
-        </a>
+        </WhatsAppLink>
       </div>
     </div>
   );

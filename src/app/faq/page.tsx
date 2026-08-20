@@ -3,6 +3,7 @@ import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FaqAccordion, { type FaqGroup } from "@/components/FaqAccordion";
+import WhatsAppLink from "@/components/WhatsAppLink";
 import { getCategories, type WCCategory } from "@/lib/woocommerce";
 
 export const metadata: Metadata = {
@@ -153,15 +154,13 @@ export default async function FaqPage() {
                   <p className="font-body text-xs text-brand-muted leading-relaxed mb-4">
                     ¿No encuentras tu respuesta?
                   </p>
-                  <a
+                  <WhatsAppLink
                     href={DEFAULT_WA}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-[#25D366] text-white font-body text-[10px] font-semibold uppercase tracking-widest px-4 py-2.5 hover:bg-[#1da851] transition-colors duration-200"
                   >
                     <WhatsAppIcon className="w-3.5 h-3.5" />
                     Escríbenos
-                  </a>
+                  </WhatsAppLink>
                 </div>
               </aside>
 
@@ -186,15 +185,13 @@ export default async function FaqPage() {
                 proyecto y te asesoramos sin compromiso.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
+                <WhatsAppLink
                   href={DEFAULT_WA}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-[#1da851] transition-colors duration-300"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                   Enviar mensaje
-                </a>
+                </WhatsAppLink>
                 <a
                   href="/catalogo"
                   className="inline-flex items-center gap-3 border border-brand-border text-brand-dark px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:border-brand-orange hover:text-brand-orange transition-colors duration-300"

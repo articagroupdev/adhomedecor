@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import WhatsAppLink from "@/components/WhatsAppLink";
 import { EN_CATEGORY_NAMES } from "@/lib/i18n";
 import {
   getCategories,
@@ -102,10 +103,10 @@ export default async function EnCatalogPage() {
             {categoriesWithProducts.length === 0 ? (
               <div className="text-center py-24">
                 <p className="font-body text-brand-muted text-lg">Categories are loading. Please try again in a moment.</p>
-                <a href={waUrl("Hello, I'd like to see your catalog")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-8 bg-[#25D366] text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-[#1da851] transition-colors">
+                <WhatsAppLink href={waUrl("Hello, I'd like to see your catalog")} className="inline-flex items-center gap-2 mt-8 bg-[#25D366] text-white px-8 py-4 font-body text-xs font-semibold uppercase tracking-widest hover:bg-[#1da851] transition-colors">
                   <WhatsAppIcon className="w-4 h-4" />
                   Contact on WhatsApp
-                </a>
+                </WhatsAppLink>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5">
@@ -122,10 +123,10 @@ export default async function EnCatalogPage() {
             <p className="font-body text-brand-muted max-w-lg mx-auto mb-8 leading-relaxed">
               We have additional stock and custom products available. Message us on WhatsApp and we'll help you out.
             </p>
-            <a href={waUrl("Hello, I'd like to know more about your products and availability")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-[#25D366] text-white px-10 py-4 font-body text-sm font-semibold uppercase tracking-widest hover:bg-[#1da851] transition-colors duration-300">
+            <WhatsAppLink href={waUrl("Hello, I'd like to know more about your products and availability")} className="inline-flex items-center gap-3 bg-[#25D366] text-white px-10 py-4 font-body text-sm font-semibold uppercase tracking-widest hover:bg-[#1da851] transition-colors duration-300">
               <WhatsAppIcon className="w-5 h-5" />
               GET A QUOTE ON WHATSAPP
-            </a>
+            </WhatsAppLink>
           </div>
         </section>
       </main>
