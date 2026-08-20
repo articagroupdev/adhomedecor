@@ -37,4 +37,4 @@ jobs:
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
           sudo apt-get install -y lftp
-          lftp -u "$FTP_USERNAME,$FTP_PASSWORD" "$FTP_HOST" -e "set ftp:ssl-allow yes; set ssl:verify-certificate no; set net:timeout 30; set net:max-retries 3; set net:reconnect-interval-base 5; mirror --reverse --no-perms --parallel=2 ./out/ ./; bye"
+          lftp -u "$FTP_USERNAME,$FTP_PASSWORD" "$FTP_HOST" -e "set ftp:ssl-allow yes; set ssl:verify-certificate no; set net:timeout 30; set net:max-retries 5; set net:reconnect-interval-base 10; mirror --reverse --no-perms --parallel=1 ./out/ ./; bye"
