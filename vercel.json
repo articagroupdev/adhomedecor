@@ -4,6 +4,10 @@
     {
       "source": "/wp-content/uploads/:path*",
       "destination": "https://admin.aydhomedecor.com/wp-content/uploads/:path*"
+    },
+    {
+      "source": "/catalogo2026.pdf",
+      "destination": "https://admin.aydhomedecor.com/catalogo2026.pdf"
     }
   ]
 }
