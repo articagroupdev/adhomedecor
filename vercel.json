@@ -1,3 +1,9 @@
 {
-  "buildCommand": "npx next build"
+  "buildCommand": "npx next build",
+  "rewrites": [
+    {
+      "source": "/wp-content/uploads/:path*",
+      "destination": "https://admin.aydhomedecor.com/wp-content/uploads/:path*"
+    }
+  ]
 }
