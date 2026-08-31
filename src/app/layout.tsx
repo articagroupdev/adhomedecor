@@ -130,16 +130,22 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        {/* Google tag bootstrap — plain inline script so it runs during HTML
+            parse, before hydration. This guarantees window.gtag is a function
+            the instant any click handler needs it; events queue in dataLayer
+            until gtag.js finishes loading. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17865925990');`,
+          }}
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17865925990"
           strategy="afterInteractive"
         />
-        <Script id="google-tag" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'AW-17865925990');`}
-        </Script>
       </head>
       <body className="min-h-full flex flex-col font-body text-brand-dark bg-white">
         {children}
