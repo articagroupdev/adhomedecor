@@ -139,6 +139,7 @@ export default function RootLayout({
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
+gtag('config', 'G-3XY88X2QB0');
 gtag('config', 'AW-17865925990');`,
           }}
         />

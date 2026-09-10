@@ -29,9 +29,15 @@ export default function WhatsAppLink({
     // the href natively. `transport_type: 'beacon'` uses navigator.sendBeacon
     // so the hit still completes even if the tab is closed right after.
     if (!e.defaultPrevented && typeof window.gtag === "function") {
+      // Google Ads conversion.
       window.gtag("event", "conversion", {
         send_to: CONVERSION_SEND_TO,
         transport_type: "beacon",
+      });
+      // GA4 lead event (routed to the G-... property configured in layout).
+      window.gtag("event", "generate_lead", {
+        transport_type: "beacon",
+        method: "whatsapp",
       });
     }
   }
