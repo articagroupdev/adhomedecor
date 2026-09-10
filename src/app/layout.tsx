@@ -144,7 +144,7 @@ gtag('config', 'AW-17865925990');`,
           }}
         />
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17865925990"
+          src="https://www.googletagmanager.com/gtag/js?id=G-3XY88X2QB0"
           strategy="afterInteractive"
         />
       </head>
