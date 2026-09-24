@@ -9,6 +9,23 @@ import { getProductBySlug, getProducts, getCategories, type WCProduct } from "@/
 const waUrl = (msg: string) =>
   `https://wa.me/16452481030?text=${encodeURIComponent(msg)}`;
 
+// Some legacy descriptions have the product code stuck as their first
+// paragraph (sometimes stale/incorrect). We already show the real SKU
+// separately, so strip that leading line if it looks like a bare code.
+function stripLeadingCode(html: string): string {
+  if (!html) return html;
+  const match = html.match(/^\s*<p[^>]*>([^<]*)<\/p>\s*/i);
+  if (!match) return html;
+  const text = match[1].trim();
+  const looksLikeCode =
+    text.length > 0 &&
+    text.length <= 20 &&
+    !text.includes(".") &&
+    text.split(" ").length <= 4 &&
+    /^[A-Za-z0-9\-/() ]+$/.test(text);
+  return looksLikeCode ? html.slice(match[0].length) : html;
+}
+
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
@@ -135,12 +152,6 @@ export default async function ProductPage({
                 </p>
               )}
 
-              {product.short_description && (
-                <div
-                  className="font-body text-brand-muted text-base leading-relaxed mb-8"
-                  dangerouslySetInnerHTML={{ __html: product.short_description }}
-                />
-              )}
 
               {/* Attributes */}
               {product.attributes.length > 0 && (
@@ -199,7 +210,7 @@ export default async function ProductPage({
                   </h2>
                   <div
                     className="font-body text-brand-muted text-sm leading-relaxed space-y-2"
-                    dangerouslySetInnerHTML={{ __html: product.description }}
+                    dangerouslySetInnerHTML={{ __html: stripLeadingCode(product.description) }}
                   />
                 </div>
               )}
