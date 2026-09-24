@@ -125,9 +125,15 @@ export default async function ProductPage({
                 </p>
               )}
 
-              <h1 className="font-heading text-3xl lg:text-5xl uppercase tracking-wide text-brand-dark leading-tight mb-6">
+              <h1 className="font-heading text-3xl lg:text-5xl uppercase tracking-wide text-brand-dark leading-tight mb-2">
                 {product.name}
               </h1>
+
+              {product.sku && (
+                <p className="font-body text-xs uppercase tracking-widest text-brand-muted mb-6">
+                  Código: {product.sku}
+                </p>
+              )}
 
               {product.short_description && (
                 <div
