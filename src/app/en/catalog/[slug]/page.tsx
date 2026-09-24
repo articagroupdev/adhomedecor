@@ -80,6 +80,11 @@ function ProductCard({ product }: { product: WCProduct }) {
           <h3 className="font-heading text-sm lg:text-base uppercase tracking-wide text-brand-dark leading-tight">
             {product.name}
           </h3>
+          {product.sku && (
+            <p className="font-body text-[11px] text-brand-muted tracking-wide mt-1">
+              {product.sku}
+            </p>
+          )}
         </div>
       </a>
       <div className="px-4 pb-4 pt-2">
